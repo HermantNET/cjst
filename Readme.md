@@ -1,66 +1,17 @@
-# CJST - 中文Javascript的工具
-
-A set of tools and functions for working with Chinese characters in the browser or NodeJS.
+# CJST - Zhuyin Remix Hardcore Edition 2018
 
 ## Features
 
-* Generating Pinyin or Zhuyin (Bopomofo) for strings of Chinese text - 翻譯中文到拼音或注音
-* Converting between Traditional and Simplified Chinese - 兌換傳統到簡體漢字而且反之亦然
-* Detecting Chinese characters in strings - 檢測中文字
-* UI elements/facilities for reading Chinese text in the browser - 用拼音和注音便利使用者讀中文字
-* Translating Chinese characters and common phrases to English - 翻譯成語和常見的字
+* Generating Zhuyin (Bopomofo) from pinyin
+
 
 ## API
 
-### Available in NodeJS or the browser
+### Available
 
-* __chineseToPinyin__ : Convert Chinese characters to Pinyin
-* __chineseToZhuyin__: Convert Chinese text to Zhuyin characters (used in R.O.C.)
 * __pinyinToZhuyin__: Convert Pinyin text to Zhuyin characters (used in R.O.C.)
 
-* __simplifiedToTraditional__: Convert Simplified Chinese to Traditional Chinese
-* __traditionalToSimplified__: Convert Traditional Chinese to Simplified Chinese
-
-* __isChineseCharacter__: Determine if a character is likely a Chinese character
-* __hasChineseCharacters__: Determine if a string or DOM element contains Chinese
-
-* __md5ChineseText__: Returns a unique identifier that represents this chinese string (only for use with this library, hashing unicode text is hard)
-* __setProperty__ : Facility to update certain properties/constants in this library
-
-### Only available in the browser
-
-* __translatePhrase__: Translate a character, word, idiom or common phrase to English
-
-* __pinyinElements__: creates an element/s with all the bits inside that encase a char with pinyin under it
-* __zhuyinElements__: creates an element/s with all the bits inside that encase a char with bopomofo under it
-
-* __pinyinTitleOnHover__: Displays pinyin titles over characters when the mouse hovers over it.
-* __zhuyinTitleOnHover__: Displays zhuyin titles over characters when the mouse hovers over it.
-
-* __pinyinTileOnHover__: Displays pinyin tiles over characters when the mouse hovers over it.
-* __zhuyinTileOnHover__: Displays zhuyin tiles over characters when the mouse hovers over it.
-
-
 ## Example Usage
-For active examples in the browser, please have a look at [example/index.html](example/index.html)
-
-All example snippets below will assume there is an instance of this library called cjst.
-
-### chineseToPinyin
-Convert Chinese characters to Pinyin
-```javascript
-cjst.chineseToPinyin('恭喜發財').join(' ')
-
-> gōng xǐ fā cái
-```
-
-### chineseToZhuyin
-Convert Chinese text to Zhuyin characters (used in R.O.C.)
-```javascript
-JSON.stringify(cjst.chineseToZhuyin('恭喜發財'))
-
-> [["ㄍㄨㄥ"," "],["ㄒㄧ","ˇ"],["ㄈㄚ"," "],["ㄘㄞ","ˊ"]]
-```
 
 ### pinyinToZhuyin
 Convert Pinyin text to Zhuyin characters (used in R.O.C.)
@@ -69,52 +20,6 @@ JSON.stringify(cjst.pinyinToZhuyin('hóng bāo ná lái'))
 
 > [["ㄏㄨㄥ","ˊ"],["ㄅㄠ"," "],["ㄋㄚ","ˊ"],["ㄌㄞ","ˊ"]]
 ```
-
-### simplifiedToTraditional
-Convert Simplified Chinese to Traditional Chinese
-```javascript
-cjst.simplifiedToTraditional('恭喜发财')
-
-> 恭喜發財
-```
-
-### traditionalToSimplified
-Convert Traditional Chinese to Simplified Chinese
-```javascript
-cjst.traditionalToSimplified('恭喜發財')
-
-> 恭喜发财
-```
-
-### hasChineseCharacters
-Determine if a string or DOM element contains Chinese
-```javascript
-cjst.hasChineseCharacters('Happy New Year!')
-cjst.hasChineseCharacters('恭喜發財')
-
-> false
-> true
-```
-
-### translatePhrase
-Translate a character, word, idiom or common phrase to English
-```javascript
-cjst.translatePhrase('恭喜發財', {}, function(response) {
-    console.log( response.translation.join('\n') );
-});
-
-> May you have a prosperous New Year! (New Year's greeting)
-```
-
-*Note that for the translation to work some extra environment setup is required.*
-
-1. First download the Cedict JSON data from [here](https://github.com/patcullen/cedictJsonData) or generate it using the included [conversion tool](tree/master/translation/cedictToJson.js) and the data from [mdbg.net](http://www.mdbg.net/chindict/chindict.php?page=cedict).
-2. If the JSON data is not stored in "translation/data/" then be sure to add the following line of code before the first call to translatePhrase().
-```javascript
-cjst.setProperty('translationLocation', '../the/location/of/your/translation/data');
-```
-
-
 
 ## License
 
